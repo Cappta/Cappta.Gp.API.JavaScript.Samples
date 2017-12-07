@@ -6,7 +6,7 @@
 
 - Execute o CapptaGpPlus;
 
-- Extraia e abra o diretório Cappta.Gp.API.Delphi.Samples-master;
+- Extraia e abra o diretório Cappta.Gp.API.JavaScript.Samples-master;
 
 - Abra o arquivo sample.js (sample-application\app\js)em um editor de texto e configure os parametros "merchantCnpj" e "checkoutNumber" com os dados fornedidos para instalação do CapptaGpPlus (não alterar a Chave de Autenticação); **Ex.:** 
 authenticationKey: '795180024C04479982560F61B3C2C06E', merchantCnpj: '00000000000000', checkoutNumber: 14
