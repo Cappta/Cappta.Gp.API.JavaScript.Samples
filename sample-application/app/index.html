@@ -5,7 +5,6 @@
     <title>Cappta - Sample</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/app.css">
 
     <script src="js/lib/jquery/jquery.min.js"></script>
@@ -18,29 +17,37 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <p class="navbar-text">
-                Utilizar pagamento com multiplos cartões?
-                <input type="radio" value="true" name="rbMultiplePayments" id="rbUseMultiplePayments"> Sim
-                <input type="radio" value="false" name="rbMultiplePayments" id="rbNotUseMultiplePayments" checked="checked"> Não
-            </p>
-            <input type="text" class="form-control hide" id="txtNumberOfPayments" placeholder="Quantidade de pagamentos" style="width: 11%; margin-top:9px;">
-        </div>
-        <div class="container-fluid hide" id="multiplePaymentsButtons">
-            <p class="navbar-text" inline>Caso necessite encerrar a sessão multiplos cartões antes de chegar ao último pagamento, clique na opção desejada:</p>
-            <button type="button" class="btn btn-default navbar-btn" id="btnConfirmMultiplePayments" onclick="confirmPayments();">Confirmar pagamentos</button>
-            <button type="button" class="btn btn-default navbar-btn" id="btnUndoMultiplePayments" onclick="undoPayments();">Desfazer pagamentos</button>
-        </div>
-    </nav>
-    
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <p class="navbar-text">
+            Utilizar pagamento com multiplos cartões?
+            <input type="radio" value="true" name="rbMultiplePayments" id="rbUseMultiplePayments"> Sim
+            <input type="radio" value="false" name="rbMultiplePayments" id="rbNotUseMultiplePayments" checked="checked">
+            Não
+        </p>
+        <input type="text" class="form-control hide" id="txtNumberOfPayments" placeholder="Quantidade de pagamentos"
+               style="width: 11%; margin-top:9px;">
+    </div>
+    <div class="container-fluid hide" id="multiplePaymentsButtons">
+        <p class="navbar-text" inline>Caso necessite encerrar a sessão multiplos cartões antes de chegar ao último
+            pagamento, clique na opção desejada:</p>
+        <button type="button" class="btn btn-default navbar-btn" id="btnConfirmMultiplePayments"
+                onclick="confirmPayments();">Confirmar pagamentos
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" id="btnUndoMultiplePayments" onclick="undoPayments();">
+            Desfazer pagamentos
+        </button>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
         <div class="custom-panel">
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-md-offset-1">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Pagamento Débito</div>
                     <div class="panel-body">
                         <input type="text" class="form-control" id="txtDebitAmount" placeholder="Valor">
-                        <br />
+                        <br/>
                         <button class="btn btn-default" onclick="debitPayment();">Executar Operação</button>
                     </div>
                 </div>
@@ -50,27 +57,30 @@
                     <div class="panel-heading">Pagamento Crédito</div>
                     <div class="panel-body">
                         <input type="text" class="form-control" id="txtCreditAmount" placeholder="Valor">
-                        <br />
+                        <br/>
                         <label>Transação Parcelada?</label>
-                        <br />
+                        <br/>
                         <label class="radio-inline">
-                            <input type="radio" value="false" checked="checked" name="opInstallmenteType" onclick="selectInstallmenteType(false);">Não</label>
+                            <input type="radio" value="false" checked="checked" name="opInstallmenteType"
+                                   onclick="selectInstallmenteType(false);">Não</label>
                         <label class="radio-inline">
-                            <input type="radio" value="true" name="opInstallmenteType" onclick="selectInstallmenteType(true);">Sim</label>
-                        <br />
+                            <input type="radio" value="true" name="opInstallmenteType"
+                                   onclick="selectInstallmenteType(true);">Sim</label>
+                        <br/>
                         <div class="hide" id="installmentDetails">
-                            <br />
+                            <br/>
                             <label>Tipo de Parcelamento:</label>
-                            <br />
+                            <br/>
                             <select id="installmentType">
                                 <option value="1">Administradora</option>
                                 <option value="2">Loja</option>
                             </select>
-                            <br />
-                            <br />
-                            <input type="text" class="form-control" id="txtCreditInstallments" placeholder="Quantidade parcelas">
+                            <br/>
+                            <br/>
+                            <input type="text" class="form-control" id="txtCreditInstallments"
+                                   placeholder="Quantidade parcelas">
                         </div>
-                        <br />
+                        <br/>
                         <button class="btn btn-default" onclick="creditPayment();">Executar Operação</button>
                     </div>
                 </div>
@@ -80,9 +90,10 @@
                     <div class="panel-heading">Pagamento Crediário</div>
                     <div class="panel-body">
                         <input type="text" class="form-control" id="txtSplittedDebitAmount" placeholder="Valor">
-                        <br />
-                        <input type="text" class="form-control" id="txtSplittedDebitInstallments" placeholder="Quantidade parcelas">
-                        <br />
+                        <br/>
+                        <input type="text" class="form-control" id="txtSplittedDebitInstallments"
+                               placeholder="Quantidade parcelas">
+                        <br/>
                         <button class="btn btn-default" onclick="splittedDebitPayment();">Executar Operação</button>
                     </div>
                 </div>
@@ -91,10 +102,12 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Cancelamento</div>
                     <div class="panel-body">
-                        <input type="text" class="form-control" id="administrativePassword" placeholder="Senha administrativa" />
-                        <br />
-                        <input type="text" class="form-control" id="administrativeCode" placeholder="Número de controle" />
-                        <br />
+                        <input type="text" class="form-control" id="administrativePassword"
+                               placeholder="Senha administrativa"/>
+                        <br/>
+                        <input type="text" class="form-control" id="administrativeCode"
+                               placeholder="Número de controle"/>
+                        <br/>
                         <button class="btn btn-default" onclick="paymentReversal();">Executar Operação</button>
                     </div>
                 </div>
@@ -109,14 +122,14 @@
                             <option value="2">Telefone/Celular</option>
                             <option value="3">Senha</option>
                         </select>
-                        <br />
-                        <br />
+                        <br/>
+                        <br/>
                         <button class="btn btn-default" onclick="pinpadInput();">Executar Operação</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Resultado</div>
@@ -125,9 +138,9 @@
                     </div>
                 </div>
             </div>
-        
         </div>
     </div>
+</div>
 </body>
 
 </html>

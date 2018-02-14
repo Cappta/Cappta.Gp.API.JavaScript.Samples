@@ -5,9 +5,11 @@
 };
 
 var onAuthenticationSuccess = function (response) {
+    console.log(response);
     updateResult('Autenticado com sucesso' + '<br>' + 'Checkout GUID: ' + response.merchantCheckoutGuid);
 };
 var onAuthenticationError = function (error) {
+    console.log(error);
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
 };
 var onPendingPayments = function (response) {
@@ -58,9 +60,9 @@ function debitPayment() {
         startMultiplePayments();
     }
 
-	var amount = parseFloat(document.getElementById('txtDebitAmount').value.replace(',', ''));
+    var amount = parseFloat(document.getElementById('txtDebitAmount').value.replace(',', ''));
 
-    checkout.debitPayment({ amount: amount }, onPaymentSuccess, onPaymentError);
+    checkout.debitPayment({amount: amount}, onPaymentSuccess, onPaymentError);
 }
 
 function creditPayment() {
@@ -125,7 +127,7 @@ function pinpadInput() {
         updateResult(response.reason);
     };
 
-    checkout.getPinpadInformation({ inputType: inputType }, success, error);
+    checkout.getPinpadInformation({inputType: inputType}, success, error);
 }
 
 function confirmPayments() {
