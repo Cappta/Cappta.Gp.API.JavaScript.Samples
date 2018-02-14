@@ -1,0 +1,10 @@
+#resposta {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+@media screen and (min-width: 1000px) {
+    .custom-panel .panel {
+        height: 396px;
+    }
+}
