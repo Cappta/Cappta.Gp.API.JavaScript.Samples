@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6882 239 26 21.517">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00bf9e;
+      }
+    </style>
+  </defs>
+  <g id="credit-card-lock-7_1_" transform="translate(6882 239)">
+    <rect id="Rectangle_182" data-name="Rectangle 182" class="cls-1" width="2.69" height="0.897" transform="translate(2.69 8.966)"/>
+    <rect id="Rectangle_183" data-name="Rectangle 183" class="cls-1" width="2.69" height="0.897" transform="translate(6.276 8.966)"/>
+    <rect id="Rectangle_184" data-name="Rectangle 184" class="cls-1" width="2.69" height="0.897" transform="translate(9.862 8.966)"/>
+    <rect id="Rectangle_185" data-name="Rectangle 185" class="cls-1" width="2.69" height="0.897" transform="translate(13.448 8.966)"/>
+    <path id="Path_111" data-name="Path 111" class="cls-1" d="M24.207,10.759a4.077,4.077,0,0,0-.9-2.51V0H0V17.931H14.345v3.586H26V11.655H24.207ZM22.414,7.441c-.179-.09-.269-.179-.448-.269h.448Zm.9,3.317v.9H17.034v-.9a3.138,3.138,0,1,1,6.276,0ZM.9.9H22.414V4.483H.9Zm0,16.138V7.172H18.379a3.9,3.9,0,0,0-2.241,3.586v.9H14.345v5.379ZM25.1,12.552v8.069H15.241V12.552Z"/>
+    <path id="Path_112" data-name="Path 112" class="cls-1" d="M22.793,18.6a1.348,1.348,0,0,0,.9-1.255,1.345,1.345,0,1,0-2.69,0,1.266,1.266,0,0,0,.9,1.255v1.883h.9Z" transform="translate(-2.172 -1.655)"/>
+  </g>
+</svg>

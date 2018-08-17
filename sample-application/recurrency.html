@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cappta - Sample</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500|Material+Icons'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sample.css">
+    <link href="css/normalize.css" rel="stylesheet" />
+
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="js/lib/jquery/jquery-maskmoney.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+
+    <script type="text/javascript" src="https://s3.amazonaws.com/cappta.api/v2/dist/cappta-checkout.js"></script>
+    <script src="js/sample-recurrency.js"></script>
+</head>
+
+<body>
+    <header class="container">
+        <h1 class="title-header">Recorrência</h1>
+    </header>
+
+    <!-- Parte principal do site -->
+    <main role="main" class="container">
+
+        <!-- Menu -->
+        <nav class="sidebar-navigation">
+            <ul class="menu-navbar">
+                <li class="menu-navbar-left-logo">
+                    <img src="images/icon_cappta.svg" width="25" alt="Logo Cappta">
+                </li>
+                <a href="index.html">
+                    <li class="menu-navbar-left">
+                        <img src="images/icon_payment.svg" width="25" alt="Logo Pagamento">
+                        <h5 class="title-sidebar">Pagamentos</h5>
+                        <span class="tooltip-menu">Pagamentos</span>
+                    </li>
+                </a>
+                <a href="recurrency.html">
+                    <li class="menu-navbar-left active">
+                        <img src="images/icon_recurrence.svg" width="25" alt="Icone Recorrência">
+                        <h5 class="title-sidebar">Recorrência</h5>
+                        <span class="tooltip-menu">Recorrência</span>
+                    </li>
+                </a>
+                <a href="token-payment.html">
+                    <li class="menu-navbar-left">
+                        <img src="images/icon_token.svg" width="25" alt="Icone Token">
+                        <h5 class="title-sidebar">Tokenização</h5>
+                        <span class="tooltip-menu">Tokenização</span>
+                    </li>
+                </a>
+            </ul>
+        </nav>
+
+        <section class="row">
+            <!-- Modal -->
+            <div>
+                <div class="modal fade" id="plan_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="subscription_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="billing_address_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="billing_date_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="discount_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="discount_list_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width:1000px">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="item_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="item_list_modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width:1000px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-auto col-md-12 col-lg-12 col-xl-12">
+                <div class="tabs tabs-style-iconbox">
+                    <nav class="nav-tab">
+                        <ul class="nav-tab-wrap">
+                            <li>
+                                <a href="#section-iconbox-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.09 21.35" width="26" class="icon-img"><title>icon_plan</title>
+                                    <g id="Layer_2" data-name="Layer 2"><g id="icon"><path class="cls-1" d="M22.65,3.3H21.22L20.6.39A.49.49,0,0,0,20,0L6.57,2.74C5.74.88,5.23.88,5,.88H1.44A1.44,1.44,0,0,0,0,2.32V19.91a1.45,1.45,0,0,0,1.44,1.44H22.65a1.45,1.45,0,0,0,1.44-1.44V4.74A1.44,1.44,0,0,0,22.65,3.3ZM19.74,1.06l.48,2.24.2,1,.5,2.34H3.63L3.17,4.42Zm2.91,3.21a.47.47,0,0,1,.46.47V6.61H21.92l-.5-2.34ZM1.44,1.85h3.5a4.93,4.93,0,0,1,.64,1.09l-3.09.62a.49.49,0,0,0-.38.58l.52,2.47H1V2.32A.46.46,0,0,1,1.44,1.85ZM22.65,20.37H1.44A.46.46,0,0,1,1,19.91V7.59H23.11V19.91A.47.47,0,0,1,22.65,20.37Z"/></g></g>
+                                </svg><span>Todos os Planos</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#section-iconbox-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="8735 125 19.645 24" width="20" class="icon-img">
+                                    <g transform="translate(8735 125)"><path class="cls-1" d="M15.559,15.9H6.3a.5.5,0,0,0,0,1H15.46a.47.47,0,0,0,.5-.5A.4.4,0,0,0,15.559,15.9Z" transform="translate(-0.024 -0.066)"/><path class="cls-1" d="M15.559,12.9H6.3a.5.5,0,1,0,0,1H15.46a.47.47,0,0,0,.5-.5A.4.4,0,0,0,15.559,12.9Z" transform="translate(-0.024 -0.054)"/><path class="cls-1" d="M15.559,9.8H6.3a.5.5,0,1,0,0,1H15.46a.47.47,0,0,0,.5-.5C16.057,10.1,15.759,9.8,15.559,9.8Z" transform="translate(-0.024 -0.041)"/><path class="cls-1" d="M6.3,7.8H10.48a.5.5,0,1,0,0-1H6.3a.5.5,0,0,0,0,1Z" transform="translate(-0.024 -0.028)"/><path class="cls-1" d="M19.329,3.286,16.342.3a1.131,1.131,0,0,0-.8-.3H3.6A1.211,1.211,0,0,0,2.4,1.2v19.12a1.151,1.151,0,0,0,1.2,1.2H18.433a1.151,1.151,0,0,0,1.2-1.2V4.183A1,1,0,0,0,19.329,3.286Zm-1,.4h-2.29V1.394Zm.2,16.83H3.6a.214.214,0,0,1-.2-.2V1.2A.214.214,0,0,1,3.6,1H14.948V4.183a.47.47,0,0,0,.5.5h3.187V20.415C18.732,20.415,18.632,20.515,18.533,20.515Z" transform="translate(-0.01 0)"/><path class="cls-1" d="M16.73,22.317a.47.47,0,0,0-.5.5c0,.1-.1.3-.2.3H1.2a.517.517,0,0,1-.2-.4V3.595c0-.1.1-.2.3-.2a.47.47,0,0,0,.5-.5.47.47,0,0,0-.5-.5A1.176,1.176,0,0,0,0,3.595v19.22a1.211,1.211,0,0,0,1.2,1.2H16.033a1.211,1.211,0,0,0,1.2-1.2A.47.47,0,0,0,16.73,22.317Z" transform="translate(0 -0.01)"/></g>
+                                </svg><span>Todas as Assinaturas</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#section-iconbox-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="7349 125 19.259 24" width="19" class="icon-img">
+                                    <g id="Group_1025" data-name="Group 1025" transform="translate(7349 125)">
+                                        <path id="Path_187" data-name="Path 187" class="cls-1" d="M18.864,3.654,15.506.3a1.593,1.593,0,0,0-.889-.3H1.284A1.307,1.307,0,0,0,0,1.284V22.716A1.307,1.307,0,0,0,1.284,24H17.975a1.307,1.307,0,0,0,1.284-1.284V4.642A1.755,1.755,0,0,0,18.864,3.654Zm-.988.494H15.012V1.383Zm.1,18.963H1.284c-.2,0-.3-.2-.3-.4V1.284a.262.262,0,0,1,.3-.3h12.84V4.642a.467.467,0,0,0,.494.494h3.654v17.58C18.272,22.914,18.173,23.111,17.975,23.111Z" transform="translate(0 0)"/>
+                                        <path id="Path_188" data-name="Path 188" class="cls-1" d="M10.34,12.12V7.675a5.165,5.165,0,0,1,2.272.988.594.594,0,0,0,.4.1.553.553,0,0,0,.593-.494c0-.2-.1-.3-.3-.494a5.576,5.576,0,0,0-2.864-1.185v-.4a.494.494,0,0,0-.988,0v.494c-1.975.1-3.457,1.383-3.457,3.062s1.086,2.667,3.457,3.16v4.444a4.98,4.98,0,0,1-3.062-1.481.69.69,0,0,0-.4-.2.529.529,0,0,0-.494.494c0,.2.1.4.2.4a5.834,5.834,0,0,0,3.654,1.58V19.33a.494.494,0,0,0,.988,0V18.144c2.074-.1,3.556-1.383,3.556-3.16C13.9,13.6,12.809,12.614,10.34,12.12Zm2.469,3.259a2.2,2.2,0,0,1-2.469,2.074V13.206C12.414,13.7,12.809,14.391,12.809,15.379Zm-3.457-7.7v4.247c-1.975-.494-2.37-1.185-2.37-2.173C6.981,8.564,7.969,7.774,9.352,7.675Z" transform="translate(-0.068 -0.07)"/>
+                                    </g>
+                                </svg><span>Todas as Faturas</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="content-wrap">
+                        <!-- Table Grid Planos -->
+                        <section id="section-iconbox-1">
+                            <div class="section-box-grid section-box-ajust">
+                                <div class="row">
+                                    <button type="button" class="IconTable fold-icon BtnCardSalesGrid BtnCardSalesAnimated bars margin-right" id="button_getPlans" onclick="SampleRecurrency.getPlans();">Listar Planos</button>
+                                    <button type="button" class="btn-master-grid btn-ajust margin-right" id="button_createPlan" href="modals/plan_form.html" data-target="#plan_modal" data-toggle="modal">Novo Plano</button>
+                                </div>
+                            </div>
+
+                            <table class="table hidden ajust-grid-table" id="plan_table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Data de criação</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="plan_list_result">
+                                </tbody>
+                                <script id="plan_list_template" type="text/template">
+                                    <tr>
+                                        <td>{{id}}</td>
+                                        <td>{{name}}</td>
+                                        <td>{{created_at}}</td>
+                                        <td>{{status}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Ações</button>
+                                                <div class="dropdown-content">
+                                                    <a class="btn-blue" id="{{id}}_show" onclick="SampleRecurrency.getPlanById('{{id}}')">Visualizar</a>
+                                                    <a class="btn-red" id="{{id}}_delete" onclick="SampleRecurrency.deletePlan('{{id}}')">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </script>
+                            </table>
+                        </section>
+
+                        <!-- Table Grid Assinatura -->
+                        <section id="section-iconbox-2">
+                            <div class="section-box-grid section-box-ajust">
+                                <div class="row">
+                                    <button type="button" class="margin-right IconTable fold-icon BtnCardSalesGrid BtnCardSalesAnimated bars" id="button_getSubscriptions" onclick="SampleRecurrency.getSubscriptions();">Listar Assinaturas</button>
+
+                                    <button type="button" id="button_createSubscription" class="btn-master-grid btn-ajust margin-right" href="modals/subscription_form.html" data-target="#subscription_modal" data-toggle="modal">Nova Assinatura</button>
+                                </div>
+                            </div>
+
+                            <table class="table hidden ajust-grid-table" id="subscription_table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome do cliente</th>
+                                        <th>E-mail do cliente</th>
+                                        <th>Data de criação</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subscription_list_result">
+                                </tbody>
+                                <script id="subscription_list_template" type="text/template">
+                                    <tr>
+                                        <td>{{id}}</td>
+                                        <td>{{customer.name}}</td>
+                                        <td>{{customer.email}}</td>
+                                        <td>{{created_at}}</td>
+                                        <td>{{status}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Ações</button>
+                                                <div class="dropdown-content">
+                                                    <a class="btn-blue" id="{{id}}_show" id="button_getSubscriptionById" onclick="SampleRecurrency.getSubscriptionById('{{id}}')">Visualizar</a>
+
+                                                    <span class="dropdown">
+                                                    <a class="btn-drop-grey dropdown-toggle" type="button" id="dropdownItems" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Itens <span class="caret"> </span></a>
+
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownItems">
+                                                        <li>
+                                                            <a href="modals/item_form.html" data-target="#item_modal" id="button_createSubscriptionItems" data-toggle="modal" data-id="{{id}}">Incluir</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="modals/item_list.html" data-target="#item_list_modal" id="button_listSubscriptionItems" data-toggle="modal" data-id="{{id}}">Listar</a>
+                                                        </li>
+                                                    </ul>
+                                                    </span>
+
+                                                    <span class="dropdown">
+                                                    <a class="btn-drop-grey dropdown-toggle" type="button" id="dropdownDiscounts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Descontos <span class="caret"> </span></a>
+
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownDiscounts">
+                                                        <li>
+                                                            <a href="modals/discount_form.html" data-target="#discount_modal" id="button_createSubscriptionDiscount" data-toggle="modal" data-id="{{id}}">Incluir</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="modals/discount_list.html" data-target="#discount_list_modal" id="button_listSubscriptionDiscounts" data-toggle="modal" data-id="{{id}}">Listar</a>
+                                                        </li>
+                                                    </ul>
+                                                    </span>
+
+                                                    <a class="btn-blue2" id="button_updateSubscriptionCard" onclick="SampleRecurrency.updateSubscriptionCard('{{id}}')">Editar cartão</a>
+                                                    <a class="btn-yellow" id="button_updateSubscriptionBillingDate" href="modals/billing_date_form.html" data-target="#billing_date_modal" data-toggle="modal" data-id="{{id}}">Editar data de faturamento</a>
+                                                    <a class="btn-red" id="button_cancelSubscription" onclick="SampleRecurrency.cancelSubscription('{{id}}')">Cancelar</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </script>
+                            </table>
+                        </section>
+
+                        <!-- Table Grid Fatura -->
+                        <section id="section-iconbox-3">
+                            <div class="section-box-grid section-box-ajust">
+                                <div class="row">
+                                    <button type="button" class="margin-right IconTable fold-icon BtnCardSalesGrid BtnCardSalesAnimated bars" id="button_getInvoices" onclick="SampleRecurrency.getInvoices();">Listar faturas</button>
+                                </div>
+                            </div>
+
+                            <table class="table hidden ajust-grid-table" id="invoice_table">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Valor em centavos</th>
+                                        <th>Status</th>
+                                        <th>Data vencimento</th>
+                                        <th>Adquirente</th>
+                                        <th>Bandeira</th>
+                                        <th>NSU</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="invoice_list_result">
+                                </tbody>
+                                <script id="invoice_list_template" type="text/template">
+                                    <tr>
+                                        <td>{{id}}</td>
+                                        <td>{{amount}}</td>
+                                        <td>{{status}}</td>
+                                        <td>{{due_at}}</td>
+                                        <td>{{acquirer_name}}</td>
+                                        <td>{{card_brand_name}}</td>
+                                        <td>{{acquirer_authorization_code}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Ações</button>
+                                                <div class="dropdown-content">
+                                                    <a class="btn-blue" id="{{id}}_show" onclick="SampleRecurrency.getInvoiceById('{{id}}')">Visualizar</a>
+                                                    <a class="btn-red" id="{{id}}_delete" onclick="SampleRecurrency.cancelInvoice('{{id}}')">Estornar</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </script>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barra lateral -->
+        <aside class="">
+            <div class="pull-right toggle-right-sidebar">
+                <span>
+                    <img src="images/icon-results.svg" width="25" alt="Icone Resultado">
+                </span>
+            </div>
+
+            <div id="right-sidebar" class="right-sidebar-notifcations nav-collapse">
+                <div class="bs-example bs-example-tabs right-sidebar-tab-notification" data-example-id="togglable-tabs">
+
+                    <div id="right-sidebar-tab-content" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="activities" aria-labelledby="activities-tab">
+
+                            <div class="right-sidebar-panel-content-heading">
+                                <h4 class="title-results-side"><span class="icon-user"></span> Mensagens</h4>
+                            </div>
+
+                            <div class="right-sidebar-panel-content animated fadeInRight" tabindex="5001" style="overflow: hidden; outline: none;">
+                                <ul class="right-sidebar-list" tabindex="5004" style="overflow: hidden; outline: none;">
+                                    <li class="sidebar-list-results">
+                                        <div class="pull-left thumbnail-hover">
+                                            <img src="images/icon-message.svg" width="30" class="heartbeat" alt="Icone de Mensagem">
+                                        </div>
+                                        <!-- <h5 class="title-results">Autenticação<br>com Sucesso</h5> -->
+                                    </li>
+
+                                    <li class="sidebar-list-results">
+                                        <h5 class="text-results" id="response"></h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+
+<!-- Table -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+<!-- JS -->
+<script src="js/index.js"></script>
+<script src="js/cbpFWTabs.js"></script>
+<script>
+    (function() {
+
+        [].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
+            new CBPFWTabs(el);
+        });
+
+    })();
+</script>
+
+</html>
