@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="7189 125 28 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00bf9e;
+      }
+    </style>
+  </defs>
+  <g id="credit-card-insert-7_1_" transform="translate(7189 125)">
+    <path id="Path_107" data-name="Path 107" class="cls-1" d="M26.923,8.333V5.667A2.459,2.459,0,0,0,24.769,3H3.231A2.459,2.459,0,0,0,1.077,5.667V8.333A2.459,2.459,0,0,0,3.231,11L0,23H28L24.769,11A2.459,2.459,0,0,0,26.923,8.333ZM1.508,21.667,5.062,8.333H8.615L6.462,21.667Zm24.985,0H9.692L10.769,8.333H22.938ZM23.692,7H4.308L3.554,9.667H3.231c-.646,0-1.077-.533-1.077-1.333V5.667c0-.8.431-1.333,1.077-1.333H24.769c.646,0,1.077.533,1.077,1.333V8.333c0,.8-.431,1.333-1.077,1.333h-.323Z" transform="translate(0 1)"/>
+    <rect id="Rectangle_174" data-name="Rectangle 174" class="cls-1" width="21.538" height="1.333" transform="translate(3.231)"/>
+    <rect id="Rectangle_175" data-name="Rectangle 175" class="cls-1" width="1.077" height="1.333" transform="translate(1.077)"/>
+    <rect id="Rectangle_176" data-name="Rectangle 176" class="cls-1" width="1.077" height="1.333" transform="translate(25.846)"/>
+  </g>
+</svg>

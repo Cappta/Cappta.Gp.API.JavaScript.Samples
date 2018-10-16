@@ -1,0 +1,88 @@
+<div class="form">
+    <div class="tab-content">
+        <!-- <h1 class="title-modal">Dados da Assinatura</h1> -->
+
+        <div class="row">
+            <div class="top-row">
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato color-white" type="text" readonly id="subscription_id" />
+                        <label class="input__label input__label--chisato" for="subscription_id">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="ID da assinatura">ID da assinatura</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato color-white" type="number" id="discount_value" />
+                        <label class="input__label input__label--chisato" for="discount_value">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Valor do desconto">Valor do desconto</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <button type="button" class="btn-master" data-dismiss="modal" id="button_createSubscriptionDiscount" onclick="SampleRecurrency.createSubscriptionDiscount()">Adicionar desconto<i class="material-icons icon-btn-all">keyboard_arrow_right</i></button>
+                </div>
+            </div>
+
+            <div class="top-row">
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato color-white" type="number" readonly id="discount_cycles" />
+                        <label class="input__label input__label--chisato" for="discount_cycles">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Ciclos">Ciclos</span>
+                    </label>
+                    </span>
+                </div>
+
+                <label>Tipo de desconto</label>
+                <br />
+                <label class="radio-inline">
+                    <input type="radio" name="discount_type" value="2">Em dinheiro
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="discount_type" value="1">Porcentagem
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/modal.js"></script>
+<script src="js/classie.js"></script>
+<script>
+    (function() {
+        if (!String.prototype.trim) {
+            (function() {
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+            // caso a entrada já esteja preenchida.
+            if (inputEl.value.trim() !== '') {
+                classie.add(inputEl.parentNode, 'input--filled');
+            }
+
+            // eventos:
+            inputEl.addEventListener('focus', onInputFocus);
+            inputEl.addEventListener('blur', onInputBlur);
+        });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+</script>

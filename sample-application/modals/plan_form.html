@@ -1,0 +1,272 @@
+<div class="form">
+    <ul class="tab-group">
+        <li role="presentation" class="tab-group-list tab active"><a href="#plan" aria-controls="home" role="tab" data-toggle="tab" id="dados_plano">Criar Planos</a></li>
+        <li role="presentation" class="tab-group-list tab"><a href="#itens" aria-controls="profile" role="tab" data-toggle="tab" id="itens_plano">Itens do Plano</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="plan">
+            <h1 class="title-modal">Dados do Plano</h1>
+
+            <div class="row">
+                <div class="top-row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_name" />
+                            <label class="input__label input__label--chisato" for="plan_name">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Nome">Nome</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_description" />
+                            <label class="input__label input__label--chisato" for="plan_description">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Descrição">Descrição</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6  margin-top">
+                        <select class="input__field--chisato input__drop__field color-white margin-top" id="plan_interval" style="font-size:11px; height:43px;">
+                            <option class="color-black" value="day">Diário</option>
+                            <option class="color-black" value="week">Semanal</option>
+                            <option class="color-black" value="month">Mensal</option>
+                            <option class="color-black" value="year">Anual</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_interval_count" />
+                            <label class="input__label input__label--chisato" for="plan_interval_count">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Intervalos">Intervalos</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_cycles" />
+                            <label class="input__label input__label--chisato" for="plan_cycles">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Quantidade de ciclos">Quantidade de ciclos</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_trial_period_days" />
+                            <label class="input__label input__label--chisato" for="plan_trial_period_days">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Dias de teste">Dias de teste</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="plan_statement_descriptor" />
+                            <label class="input__label input__label--chisato" for="plan_statement_descriptor">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Texto na fatura do cartão">Texto na fatura do cartão</span>
+                        </label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <a href="" class="btn-master" data-dismiss="modal" id="button_createPlan" onclick="SampleRecurrency.createPlan();">Criar plano<i class="material-icons icon-btn-all">keyboard_arrow_right</i></a>
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane row" id="itens">
+            <h1 class="title-modal">Dados do Iten</h1>
+
+            <div class="top-row">
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_name" />
+                        <label class="input__label input__label--chisato" for="plan_item_name">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Nome">Nome</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_quantity" />
+                        <label class="input__label input__label--chisato" for="plan_item_quantity">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Quantidade">Quantidade</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_price" />
+                        <label class="input__label input__label--chisato" for="plan_item_price">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Preço">Preço</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_description" />
+                        <label class="input__label input__label--chisato" for="plan_item_description">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Descrição">Descrição</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_cycles" />
+                        <label class="input__label input__label--chisato" for="plan_item_cycles">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Ciclos">Ciclos</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <a href="" class="btn-master" id="adicionar_item" onclick="addPlanItem()">Adicionar item<i class="material-icons icon-btn-all">keyboard_arrow_right</i></a>
+                </div>
+            </div>
+
+            <ul class="list-group" style="width: 555px;">
+                <div id="result_plans_itens"></div>
+                <script id="plans_itens_template" type="text/template">
+                    <li class="list-group-item">{{name}}
+                        <span class="label label-danger right"><a class="text-white" onclick="removePlanItem();">Excluir</a></span>
+                    </li>
+                </script>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container" style="width:600px">
+    <br />
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#plan" aria-controls="home" role="tab" data-toggle="tab" id="dados_plano">Dados do Plano</a></li>
+        <li role="presentation"><a href="#itens" aria-controls="profile" role="tab" data-toggle="tab" id="itens_plano">Itens</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active" id="plan">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" id="plan_name">
+                    <br />
+                    <label>Periodicidade</label>
+                    <br />
+                    <select class="form-control" id="plan_interval">
+                        <option value="day">Diário</option>
+                        <option value="week">Semanal</option>
+                        <option value="month">Mensal</option>
+                        <option value="year">Anual</option>
+                    </select>
+                    <br />
+                    <label>Quantidade de ciclos</label>
+                    <input type="number" class="form-control" id="plan_cycles">
+                    <br />
+                    <label>Texto na fatura do cartão</label>
+                    <input type="text" class="form-control" id="plan_statement_descriptor">
+                </div>
+                <div class="col-xs-6">
+                    <label>Descrição</label>
+                    <input type="text" class="form-control" id="plan_description">
+                    <br />
+                    <label>Intervalos</label>
+                    <input type="number" class="form-control" id="plan_interval_count">
+                    <br />
+                    <label>Dias de teste</label>
+                    <input type="number" class="form-control" id="plan_trial_period_days">
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-success" data-dismiss="modal" id="button_createPlan" onclick="SampleRecurrency.createPlan();">Criar plano</button>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="itens">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" id="plan_item_name">
+                    <br />
+                    <label>Quantidade</label>
+                    <input type="number" class="form-control" id="plan_item_quantity">
+                    <br />
+                    <label>Preço</label>
+                    <input type="number" class="form-control" id="plan_item_price">
+                </div>
+                <div class="col-xs-6">
+                    <label>Descrição</label>
+                    <input type="text" class="form-control" id="plan_item_description">
+                    <br />
+                    <label>Ciclos</label>
+                    <input type="number" class="form-control" id="plan_item_cycles">
+                    <br />
+                    <br />
+                    <button type="button" class="btn btn-default btn-sm" id="adicionar_item" onclick="addPlanItem()" )>
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Adicionar item
+                    </button>
+                </div>
+            </div>
+            <br>
+            <ul class="list-group" style="width: 555px;">
+                <div id="result_plans_itens"></div>
+                <script id="plans_itens_template" type="text/template">
+                    <li class="list-group-item">{{name}}
+                        <span class="label label-danger right"><a class="text-white" onclick="removePlanItem();">Excluir</a></span>
+                    </li>
+                </script>
+            </ul>
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+</div> -->
+
+<script src="js/modal.js"></script>
+<script src="js/classie.js"></script>
+<script>
+    (function() {
+        if (!String.prototype.trim) {
+            (function() {
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+            // caso a entrada já esteja preenchida.
+            if (inputEl.value.trim() !== '') {
+                classie.add(inputEl.parentNode, 'input--filled');
+            }
+
+            // eventos:
+            inputEl.addEventListener('focus', onInputFocus);
+            inputEl.addEventListener('blur', onInputBlur);
+        });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+</script>

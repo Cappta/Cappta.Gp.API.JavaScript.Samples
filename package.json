@@ -1,0 +1,19 @@
+{
+  "name": "cappta.gp.api.javascript.samples",
+  "version": "1.0.0",
+  "description": "**Configurando e usando:**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cappta/Cappta.Gp.API.JavaScript.Samples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cappta/Cappta.Gp.API.JavaScript.Samples/issues"
+  },
+  "homepage": "https://github.com/Cappta/Cappta.Gp.API.JavaScript.Samples#readme"
+}

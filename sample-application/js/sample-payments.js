@@ -1,18 +1,19 @@
 ﻿var authenticationRequest = {
     authenticationKey: '795180024C04479982560F61B3C2C06E',
-    merchantCnpj: '00000000000000',
-    checkoutNumber: 14
 };
 
-var onAuthenticationSuccess = function (response) {
-    console.log(response);
+var checkouts;
+
+var onAuthenticationSuccess = function(response) {
     updateResult('Autenticado com sucesso' + '<br>' + 'Checkout GUID: ' + response.merchantCheckoutGuid);
+    getCheckouts();
 };
-var onAuthenticationError = function (error) {
-    console.log(error);
+
+var onAuthenticationError = function(error) {
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
 };
-var onPendingPayments = function (response) {
+
+var onPendingPayments = function(response) {
     console.log(response);
 };
 
@@ -28,7 +29,7 @@ function startMultiplePayments() {
     try {
         var numberOfPayments = parseInt(document.getElementById('txtNumberOfPayments').value);
 
-        checkout.startMultiplePayments(numberOfPayments, function () {
+        checkout.startMultiplePayments(numberOfPayments, function() {
             alert('Sessão multiplos pagamentos encerrada!');
             document.getElementById('txtNumberOfPayments').value = 0;
             handlerMultiplePaymentsElements(false);
@@ -48,10 +49,10 @@ function handlerMultiplePaymentsElements(disabled) {
     document.getElementById('rbNotUseMultiplePayments').disabled = disabled;
 }
 
-var onPaymentSuccess = function (response) {
+var onPaymentSuccess = function(response) {
     updateResult(response.receipt.merchantReceipt + '<br>' + response.receipt.customerReceipt);
 };
-var onPaymentError = function (error) {
+var onPaymentError = function(error) {
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
 };
 
@@ -61,8 +62,7 @@ function debitPayment() {
     }
 
     var amount = parseFloat(document.getElementById('txtDebitAmount').value.replace(',', ''));
-
-    checkout.debitPayment({amount: amount}, onPaymentSuccess, onPaymentError);
+    checkout.debitPayment({ amount: amount }, onPaymentSuccess, onPaymentError);
 }
 
 function creditPayment() {
@@ -97,7 +97,7 @@ function splittedDebitPayment() {
     checkout.splittedDebitPayment(splittedDebitRequest, onPaymentSuccess, onPaymentError);
 }
 
-function selectInstallmenteType(value) {
+function selectInstallmentType(value) {
     if (value) {
         document.getElementById('installmentDetails').classList.add('show');
         return;
@@ -119,15 +119,15 @@ function pinpadInput() {
     var elInputType = document.getElementById("pinpadInputType");
     var inputType = elInputType.options[elInputType.selectedIndex].value;
 
-    var success = function (response) {
+    var success = function(response) {
         updateResult(response.pinpadValue);
     };
 
-    var error = function (response) {
+    var error = function(response) {
         updateResult(response.reason);
     };
 
-    checkout.getPinpadInformation({inputType: inputType}, success, error);
+    checkout.getPinpadInformation({ inputType: inputType }, success, error);
 }
 
 function confirmPayments() {
@@ -147,10 +147,65 @@ function undoPayments() {
 }
 
 function updateResult(message) {
-    document.getElementById('resposta').innerHTML = message;
+    document.getElementById('response').innerHTML = message;
 }
 
-$(function () {
+function getCheckouts() {
+    var success = function(response) {
+        var combo = document.getElementById("checkoutList");
+        combo.innerHTML = null;
+
+        checkouts = response.checkouts;
+
+        response.checkouts.map(function(checkout) {
+            var option = document.createElement("option");
+            option.text = checkout.MerchantCnpj;
+            option.value = checkout.MerchantCnpj;
+            combo.add(option, null);
+        });
+
+        var cnpj = document.getElementById("checkoutList").value;
+        if (cnpj !== null) {
+            updateCheckoutInfo(cnpj);
+        }
+
+    };
+
+    var error = function(response) {
+        updateResult(response.reason);
+    };
+
+    checkout.getCheckouts(success, error);
+}
+
+function setCheckout() {
+    var success = function(response, cnpj) {
+        updateResult("PDV ativado com sucesso");
+        updateCheckoutInfo(cnpj);
+    };
+
+    var error = function(response) {
+        console.log(response);
+        updateResult(response.reason);
+    };
+
+    var cnpj = document.getElementById("checkoutList").value;
+    checkout.setCheckout(cnpj, success, error);
+}
+
+function updateCheckoutInfo(cnpj) {
+    var info = document.getElementById("active-checkout");
+    var checkout = getActivatedCheckout(checkouts, cnpj);
+    info.innerHTML = "Estabelecimento: " + checkout.TradingName + "<br>CNPJ: " + checkout.MerchantCnpj + "<br>PDV: " + checkout.CheckoutNumber;
+}
+
+function getActivatedCheckout(checkouts, cnpj) {
+    return checkouts.find(function(item) {
+        return item.MerchantCnpj === cnpj;
+    });
+}
+
+$(function() {
 
     $('#rbUseMultiplePayments').prop('checked', false);
     $('#rbNotUseMultiplePayments').prop('checked', true);
@@ -159,7 +214,7 @@ $(function () {
     $('#txtCreditAmount').maskMoney();
     $('#txtSplittedDebitAmount').maskMoney();
 
-    $('input[name=rbMultiplePayments]').change(function () {
+    $('input[name=rbMultiplePayments]').change(function() {
         var isMultiplePayments = this.value === 'true' ? true : false;
 
         if (isMultiplePayments) {

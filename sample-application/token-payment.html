@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cappta - Sample</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sample.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500|Material+Icons'>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+
+    <script type="text/javascript" src="https://s3.amazonaws.com/cappta.api/v2/dist/cappta-checkout.js"></script>
+    <script src="js/sample-token-payment.js"></script>
+
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/lib//bootstrap/bootstrap.min.js"></script>
+    <script src="js/lib/jquery/jquery-maskmoney.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+</head>
+
+<body>
+    <header class="container">
+        <h1 class="title-header">Tokenização</h1>
+    </header>
+
+    <!-- Parte principal do site -->
+    <main class="container">
+
+        <!-- Menu -->
+        <nav class="sidebar-navigation">
+            <ul class="menu-navbar">
+                <li class="menu-navbar-left-logo">
+                    <img src="images/icon_cappta.svg" width="25" alt="Logo Cappta">
+                </li>
+                <a href="index.html">
+                    <li class="menu-navbar-left">
+                        <img src="images/icon_payment.svg" width="25" alt="Logo Pagamento">
+                        <h5 class="title-sidebar">Pagamentos</h5>
+                        <span class="tooltip-menu">Pagamentos</span>
+                    </li>
+                </a>
+                <a href="recurrency.html">
+                    <li class="menu-navbar-left">
+                        <img src="images/icon_recurrence.svg" width="25" alt="Icone Recorrência">
+                        <h5 class="title-sidebar">Recorrência</h5>
+                        <span class="tooltip-menu">Recorrência</span>
+                    </li>
+                </a>
+                <a href="token-payment.html">
+                    <li class="menu-navbar-left active">
+                        <img src="images/icon_token.svg" width="25" alt="Icone Token">
+                        <h5 class="title-sidebar">Tokenização</h5>
+                        <span class="tooltip-menu">Tokenização</span>
+                    </li>
+                </a>
+            </ul>
+        </nav>
+
+        <section class="row">
+            <div class="col col-auto col-md-12 col-lg-12 col-xl-12">
+                <div class="tabs tabs-style-iconbox">
+
+                    <nav class="nav-tab">
+                        <ul class="nav-tab-wrap">
+                            <li>
+                                <a href="#section-iconbox-1" style="height: 5.5em;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="7033 125 24.615 24" width="22" class="icon-img">
+                                    <g id="Group_1024" data-name="Group 1024" transform="translate(7033 125)">
+                                        <path id="Path_182" data-name="Path 182" class="cls-1" d="M6.41,9.744H17.9a.485.485,0,0,0,.513-.513V.513C18.513.205,18.308,0,18,0H6.41A.469.469,0,0,0,6,.513V9.231A.469.469,0,0,0,6.41,9.744Zm.513-8.718H17.487V8.821H6.923Z" transform="translate(0.154 0)"/>
+                                        <path id="Path_183" data-name="Path 183" class="cls-1" d="M6.051,18.2H.513A.484.484,0,0,0,0,18.713v4.308a.484.484,0,0,0,.513.513H6.051a.484.484,0,0,0,.513-.513V18.713A.549.549,0,0,0,6.051,18.2Zm-.513,4.308H1.026V19.226H5.538Z" transform="translate(0 0.467)"/>
+                                        <path id="Path_184" data-name="Path 184" class="cls-1" d="M14.851,18.2H9.313a.484.484,0,0,0-.513.513v4.308a.484.484,0,0,0,.513.513h5.538a.484.484,0,0,0,.513-.513V18.713A.549.549,0,0,0,14.851,18.2Zm-.513,4.308H9.826V19.226h4.513v3.282Z" transform="translate(0.226 0.467)"/>
+                                        <path id="Path_185" data-name="Path 185" class="cls-1" d="M23.651,18.2H18.113a.485.485,0,0,0-.513.513v4.308a.485.485,0,0,0,.513.513h5.538a.485.485,0,0,0,.513-.513V18.713A.549.549,0,0,0,23.651,18.2Zm-.41,4.308H18.728V19.226h4.513Z" transform="translate(0.451 0.467)"/>
+                                        <path id="Path_186" data-name="Path 186" class="cls-1" d="M2.913,16.744a.484.484,0,0,0,.513-.513V14.385h8.41v1.846a.513.513,0,1,0,1.026,0V14.385h8.308v1.846a.513.513,0,1,0,1.026,0V13.974a.484.484,0,0,0-.513-.513H12.862V11.513a.513.513,0,0,0-1.026,0v1.949H2.913a.484.484,0,0,0-.513.513v2.256A.549.549,0,0,0,2.913,16.744Z" transform="translate(0.062 0.282)"/>
+                                    </g>
+                                </svg><span>Pagamento Crédito<br>com criação de Token</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#section-iconbox-2" style="height: 5.5em;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 28" class="icon-img" width="16"><title>icon_token_open</title><g id="Layer_2" data-name="Layer 2"><g id="icon"><g id="lock-open-7"><path class="cls-1" d="M1.73,13H0V28H20V13H2.93l-.72-1.07A7,7,0,0,1,13.79,4.07L16,7.38l.83-.56L14.62,3.51a8,8,0,0,0-13.24,9ZM19,14V27H1V14Z"/><path class="cls-1" d="M9,21.82V25h2V21.82a3,3,0,1,0-2,0ZM10,17a2,2,0,1,1-2,2A2,2,0,0,1,10,17Z"/></g></g></g>
+                                </svg><span>Criação<br>de Token</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#section-iconbox-3" style="height: 5.5em;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 26" class="icon-img" width="16"><title>icon_token_close</title><g id="Layer_2" data-name="Layer 2"><g id="icon"><g id="lock-7"><path class="cls-1" d="M10,0A8,8,0,0,0,2,8v3H0V26H20V11H18V8A8,8,0,0,0,10,0ZM3,8A7,7,0,0,1,17,8v3H3Zm16,4V25H1V12H19Z"/><path class="cls-1" d="M10,14a3,3,0,0,0-1,5.82V23h2V19.82A3,3,0,0,0,10,14Zm0,5a2,2,0,1,1,2-2A2,2,0,0,1,10,19Z"/></g></g></g>
+                                </svg><span>Pagamento<br>com Token</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#section-iconbox-4" style="height: 5.5em;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="7504 125 24 24" width="22" class="icon-img">
+                                        <path id="Path_119" data-name="Path 119" class="cls-1" d="M20.5,3.5A11.869,11.869,0,0,0,12,0,11.95,11.95,0,0,0,0,12a11.869,11.869,0,0,0,3.5,8.5A12.3,12.3,0,0,0,12,24h0A11.95,11.95,0,0,0,24,12,12.3,12.3,0,0,0,20.5,3.5ZM4.2,4.2A10.8,10.8,0,0,1,12,1a10.6,10.6,0,0,1,7.4,2.9L3.9,19.4A10.6,10.6,0,0,1,1,12,10.8,10.8,0,0,1,4.2,4.2ZM19.8,19.8A10.968,10.968,0,0,1,12,23h0a10.6,10.6,0,0,1-7.4-2.9L20.1,4.6A10.6,10.6,0,0,1,23,12,10.968,10.968,0,0,1,19.8,19.8Z" transform="translate(7504 125)"/>
+                                </svg><span>Cancelar Transação<br>com Token</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="content-wrap">
+                        <!-- Pagamento Crédito com criação de Token -->
+                        <section id="section-iconbox-1">
+                            <div class="section-box">
+                                <div class="content-header">
+                                    <p>Pagamento Crédito com criação de Token</p>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="container col-lg-auto col-sm-12 col-md-4 col-lg-4">
+                                        <div class="title-box margin-bottom">Valor da loja</div>
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato ajust-text-input" type="text" id="txtCreditAmount" />
+                                            <label class="input__label input__label--chisato" for="txtCreditAmount" style="text-align:center;">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Valor do Pagamento">Valor do Pagamento</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerName" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerName">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Nome do cliente">Nome do cliente</span>
+                                        </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="title-box-input ajust-title">Tipo do documento:</div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <select class="input__field--chisato input__drop__field" id="documentType">
+                                            <option value="individual">CPF</option>
+                                            <option value="company">CNPJ</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerDocument" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerDocument">
+                                                <span class="input__label-content input__label-content--chisato" data-content="CPF ou CNPJ do cliente">CPF ou CNPJ do cliente</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerEmail" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerEmail">
+                                                <span class="input__label-content input__label-content--chisato" data-content="E-mail Name">E-mail</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="row ajust-form">
+                                        <div class="title-box-input ajust-title">Transação parcelada?</div>
+                                        <div class="radio">
+                                            <input type="radio" value="false" checked="checked" name="opInstallmentType" onclick="onSelectInstallmentType(false);" id="InstallmentFalsePaymentCreateCardToken">
+                                            <label for="InstallmentFalsePaymentCreateCardToken" class="radio-label">Não</label>
+                                        </div>
+
+                                        <div class="radio">
+                                            <input type="radio" value="true" name="opInstallmentType" onclick="onSelectInstallmentType(true);" id="InstallmentTruePaymentCreateCardToken">
+                                            <label for="InstallmentTruePaymentCreateCardToken" class="radio-label">Sim</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hide" id="installmentDetails">
+                                    <div class="title-box-input ajust-title">Tipo de Parcelamento:</div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <select class="input__field--chisato input__drop__field" id="installmentType">
+                                            <option value="1">Administradora</option>
+                                            <option value="2">Loja</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="number" id="txtCreditInstallments" />
+                                            <label class="input__label input__label--chisato" for="txtCreditInstallments">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Quantidade parcelas">Quantidade parcelas</span>
+                                        </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <button id="executeCreditPaymentAndCreateCardToken" onclick="creditPaymentAndCreateCardToken();" class=" btn-master ajust-btn-box">Executar Operação<i class="material-icons icon-btn-all">keyboard_arrow_right</i></button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Criação de Token -->
+                        <section id="section-iconbox-2">
+                            <div class="section-box">
+                                <div class="content-header">
+                                    <p>Criação de Token</p>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerNameTokenCreation" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerNameTokenCreation">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Nome do cliente">Nome do cliente</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="title-box-input ajust-title-box">Tipo do documento:</div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <select class="input__field--chisato input__drop__field" id="documentTypeTokenCreation">
+                                            <option value="individual">CPF</option>
+                                            <option value="company">CNPJ</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerDocumentTokenCreation" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerDocumentTokenCreation">
+                                                <span class="input__label-content input__label-content--chisato" data-content="CPF ou CNPJ do cliente">CPF ou CNPJ do cliente</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerEmailTokenCreation" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerEmailTokenCreation">
+                                                <span class="input__label-content input__label-content--chisato" data-content="E-mail">E-mail</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <button id="executeCreateToken" onclick="createCardToken();" class="btn-master ajust-btn-box">Executar Operação<i class="material-icons icon-btn-all">keyboard_arrow_right</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Pagamento com Token -->
+                        <section id="section-iconbox-3">
+                            <div class="section-box">
+                                <div class="content-header">
+                                    <p>Pagamento com Token</p>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="container col-lg-auto col-sm-12 col-md-4 col-lg-4">
+                                        <div class="title-box margin-bottom">Valor da loja</div>
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato ajust-text-input" type="text" id="txtTokenAmount" />
+                                            <label class="input__label input__label--chisato" for="txtTokenAmount" style="text-align:center;">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Valor do Pagamento">Valor do Pagamento</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCardToken" />
+                                            <label class="input__label input__label--chisato" for="txtCardToken">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Card Token">Card Token</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtOrderReference" />
+                                            <label class="input__label input__label--chisato" for="txtOrderReference">
+                                                <span class="input__label-content input__label-content--chisato" data-content="Pedido">Pedido</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCustomerId" />
+                                            <label class="input__label input__label--chisato" for="txtCustomerId">
+                                                <span class="input__label-content input__label-content--chisato" data-content="ID do Cliente">ID do Cliente</span>
+                                        </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="title-box-input ajust-title">Transação parcelada?</div>
+
+                                    <div class="radio">
+                                        <input type="radio" value="false" id="opInstallmentFalseTypeWithToken" checked="checked" name="opInstallmentTypeWithToken" onclick="onSelectPaymentWithTokenInstallmentType(false);">
+                                        <label for="opInstallmentFalseTypeWithToken" class="radio-label">Não</label>
+                                    </div>
+
+                                    <div class="radio">
+                                        <input type="radio" value="true" id="opInstallmentTrueTypeWithToken" name="opInstallmentTypeWithToken" onclick="onSelectPaymentWithTokenInstallmentType(true);">
+                                        <label for="opInstallmentTrueTypeWithToken" class="radio-label">Sim</label>
+                                    </div>
+                                </div>
+
+                                <div class="row ajust-form hide" id="paymentWithTokenInstallmentDetails">
+                                    <div class="title-box-input ajust-title">Tipo de Parcelamento:</div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <span class="input input--chisato">
+                                                <input class="input__field input__field--chisato" type="number" id="txtTokenCreditInstallments" />
+                                                <label class="input__label input__label--chisato" for="txtTokenCreditInstallments">
+                                                    <span class="input__label-content input__label-content--chisato" data-content="Quantidade parcelas">Quantidade parcelas</span>
+                                        </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <button id="executeCreatePayment" onclick="paymentWithToken();" class="btn-master ajust-btn-box">Executar Operação<i class="material-icons icon-btn-all">keyboard_arrow_right</i></button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Cancelar Transação com Token -->
+                        <section id="section-iconbox-4">
+                            <div class="section-box">
+                                <div class="content-header">
+                                    <p>Cancelar Transação com Token</p>
+                                </div>
+
+                                <div class="row ajust-form">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <span class="input input--chisato">
+                                            <input class="input__field input__field--chisato" type="text" id="txtCancelTokenPayment" />
+                                            <label class="input__label input__label--chisato" for="txtCancelTokenPayment">
+                                                <span class="input__label-content input__label-content--chisato" data-content="PaymentKey para cancelamento">PaymentKey para cancelamento</span>
+                                        </label>
+                                        </span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <button id="executeCancelTokenPayment" onclick="cancelTokenPayment();" class="btn-master ajust-btn-box">Executar Operação<i class="material-icons icon-btn-all">keyboard_arrow_right</i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Barra lateral -->
+        <aside class="">
+            <div class="pull-right toggle-right-sidebar">
+                <span>
+                    <img src="images/icon-results.svg" width="25" alt="Icone Resultado">
+                </span>
+            </div>
+
+            <div id="right-sidebar" class="right-sidebar-notifcations nav-collapse">
+                <div class="bs-example bs-example-tabs right-sidebar-tab-notification" data-example-id="togglable-tabs">
+
+                    <div id="right-sidebar-tab-content" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="activities" aria-labelledby="activities-tab">
+
+                            <div class="right-sidebar-panel-content-heading">
+                                <h4 class="title-results-side"><span class="icon-user"></span> Resultado</h4>
+                            </div>
+
+                            <div class="right-sidebar-panel-content animated fadeInRight" tabindex="5001" style="overflow: hidden; outline: none;">
+                                <ul class="right-sidebar-list" tabindex="5004" style="overflow: hidden; outline: none;">
+                                    <li class="sidebar-list-results">
+                                        <div class="pull-left thumbnail-hover">
+                                            <img src="images/icon-message.svg" width="30" class="heartbeat" alt="Icone de Mensagem">
+                                        </div>
+                                        <!-- <h5 class="title-results">Pagamento cancelado<br>com sucesso!</h5> -->
+                                    </li>
+
+                                    <li class="sidebar-list-results">
+                                        <h5 class="text-results" id="response">Indentificação do pagamento:</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+</body>
+
+<!-- Table -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+
+<!-- JS -->
+<script src="js/index.js"></script>
+<script src="js/classie.js"></script>
+<script>
+    (function() {
+        if (!String.prototype.trim) {
+            (function() {
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+            // caso a entrada já esteja preenchida.
+            if (inputEl.value.trim() !== '') {
+                classie.add(inputEl.parentNode, 'input--filled');
+            }
+
+            // eventos:
+            inputEl.addEventListener('focus', onInputFocus);
+            inputEl.addEventListener('blur', onInputBlur);
+        });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+</script>
+
+<script src="js/cbpFWTabs.js"></script>
+<script>
+    (function() {
+
+        [].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
+            new CBPFWTabs(el);
+        });
+
+    })();
+</script>
+
+</html>

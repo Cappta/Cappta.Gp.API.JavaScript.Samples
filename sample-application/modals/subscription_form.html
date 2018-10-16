@@ -1,0 +1,219 @@
+<div class="form">
+    <!-- <ul class="tab-group">
+        <li role="presentation" class="tab-group-list tab active"><a href="#plan" aria-controls="home" role="tab" data-toggle="tab" id="dados_plano">Criar Planos</a></li>
+        <li role="presentation" class="tab-group-list tab"><a href="#itens" aria-controls="profile" role="tab" data-toggle="tab" id="itens_plano">Itens do Plano</a></li>
+    </ul> -->
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="subscription">
+            <h1 class="title-modal">Dados da Assinatura</h1>
+
+            <div class="row">
+                <div class="top-row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="subscription_plan_id" />
+                            <label class="input__label input__label--chisato" for="subscription_plan_id">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="ID do Plano">ID do Plano</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="subscription_customer_name" />
+                            <label class="input__label input__label--chisato" for="subscription_customer_name">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Nome do comprador">Nome do comprador</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="subscription_customer_start_at" />
+                            <label class="input__label input__label--chisato" for="subscription_customer_start_at">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="Data de início da assinatura">Data de início da assinatura</span>
+                        </label>
+                        </span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                        <span class="input input--chisato margin-top">
+                            <input class="input__field input__field--chisato color-white" type="text" id="subscription_customer_email" />
+                            <label class="input__label input__label--chisato" for="subscription_customer_email">
+                                <span class="input__label-content input__label-content--chisato color-white" data-content="E-mail do comprador">E-mail do comprador</span>
+                        </label>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <a href="" class="btn-master" data-dismiss="modal" id="button_createSubscription" onclick="SampleRecurrency.createSubscription();">Criar assinatura<i class="material-icons icon-btn-all">keyboard_arrow_right</i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div role="tabpanel" class="tab-pane row" id="itens">
+            <h1 class="title-modal">Dados do Iten</h1>
+
+            <div class="top-row">
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_name" />
+                        <label class="input__label input__label--chisato" for="plan_item_name">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Nome">Nome</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_quantity" />
+                        <label class="input__label input__label--chisato" for="plan_item_quantity">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Quantidade">Quantidade</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_price" />
+                        <label class="input__label input__label--chisato" for="plan_item_price">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Preço">Preço</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_description" />
+                        <label class="input__label input__label--chisato" for="plan_item_description">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Descrição">Descrição</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-6 margin-top">
+                    <span class="input input--chisato margin-top">
+                        <input class="input__field input__field--chisato" type="text" id="plan_item_cycles" />
+                        <label class="input__label input__label--chisato" for="plan_item_cycles">
+                            <span class="input__label-content input__label-content--chisato color-white" data-content="Ciclos">Ciclos</span>
+                    </label>
+                    </span>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-top">
+                    <a href="" class="btn-master" id="adicionar_item" onclick="addPlanItem()">Adicionar item<i class="material-icons icon-btn-all">keyboard_arrow_right</i></a>
+                </div>
+            </div>
+
+            <ul class="list-group" style="width: 555px;">
+                <div id="result_plans_itens"></div>
+                <script id="plans_itens_template" type="text/template">
+                    <li class="list-group-item">{{name}}
+                        <span class="label label-danger right"><a class="text-white" onclick="removePlanItem();">Excluir</a></span>
+                    </li>
+                </script>
+            </ul>
+        </div> -->
+    </div>
+</div>
+
+
+
+<!-- <div class="container" style="width:600px">
+    <br />
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="subscription">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>ID do Plano</label>
+                    <input type="text" class="form-control" id="subscription_plan_id">
+                    <br />
+                    <label>Nome do comprador</label>
+                    <input type="text" class="form-control" id="subscription_customer_name">
+                    <br />
+                </div>
+                <div class="col-xs-6">
+                    <label>Data de início da assinatura</label>
+                    <input type="date" class="form-control" id="subscription_customer_start_at">
+                    <br />
+                    <label>E-mail do comprador</label>
+                    <input type="text" class="form-control" id="subscription_customer_email">
+                    <br />
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-success" data-dismiss="modal" id="button_createSubscription" onclick="SampleRecurrency.createSubscription();">Criar assinatura</button>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="discounts">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Ciclos</label>
+                    <input type="text" class="form-control" id="">
+                    <br />
+                    <label>Tipo de desconto</label>
+                    <br />
+                    <select class="form-control">
+                        <option value="percentage">Porcentagem</option>
+                        <option value="flat">Dinheiro</option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <label>Valor</label>
+                    <input type="text" class="form-control" id="">
+                    <br />
+                    <br />
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Adicionar desconto
+                    </button>
+                </div>
+            </div>
+            <br>
+            <ul class="list-group" style="width: 555px;">
+                <li class="list-group-item">Desconto 1
+                    <span class="label label-danger right"><a class="text-white">Excluir</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+</div> -->
+
+<script src="js/modal.js"></script>
+<script src="js/classie.js"></script>
+<script>
+    (function() {
+        if (!String.prototype.trim) {
+            (function() {
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+            // caso a entrada já esteja preenchida.
+            if (inputEl.value.trim() !== '') {
+                classie.add(inputEl.parentNode, 'input--filled');
+            }
+
+            // eventos:
+            inputEl.addEventListener('focus', onInputFocus);
+            inputEl.addEventListener('blur', onInputBlur);
+        });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+</script>
