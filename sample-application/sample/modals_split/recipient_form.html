@@ -1,0 +1,79 @@
+<div class="container" style="width:600px">
+    <br />
+    <div class="tab-content">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Razão social</label>
+                    <input type="text" class="form-control" id="company_name">
+                    <br />
+                    <label>Número do documento</label>
+                    <input type="text" class="form-control" id="document_number">
+                    <br />
+                </div>
+                <div class="col-xs-6">
+                    <label>Tipo de documento</label>
+                    <br />
+                    <select class="form-control" id="document_type">
+                        <option value="2">CPF</option>
+                        <option value="1">CNPJ</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <fieldset>
+                <legend>Dados de Contato</legend>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" id="contact_name">
+                        <br />
+                        <label>E-mail</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Telefone</label>
+                        <input type="text" class="form-control" id="phone_number">
+                        <br />
+                        <label>Celular</label>
+                        <input type="text" class="form-control" id="mobile_phone_number">
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Dados Bancários</legend>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Número da agência</label>
+                        <input type="number" class="form-control" id="branch_code">
+                        <br />
+                        <label>Número da conta</label>
+                        <input type="number" class="form-control" id="account_number">
+                        <br />
+                        <label>Código do banco</label>
+                        <input type="number" class="form-control" id="bank_id">
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Dígito da agência</label>
+                        <input type="number" class="form-control" id="branch_code_digit">
+                        <br />
+                        <label>Dígito da conta</label>
+                        <input type="number" class="form-control" id="account_number_digit">
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <ul class="list-group" style="width: 720px;">
+                <div id="result_split_recipients"></div>
+                <script id="split_recipients_template" type="text/template">
+                    <li class="list-group-item">
+                        <span><b>Chave do recebedor:</b> {{recipient_key}}</span>
+                        <span style="margin-left: 30px;"><b>Valor: </b>{{amount}}</span>
+                    </li>
+                </script>
+            </ul>
+            <br />
+            <button class="btn btn-success" data-dismiss="modal" id="button_createSplit" onclick="SampleSplit.createRecipient();">Criar recebedor</button>
+        </div>
+    <br />
+</div>
