@@ -1,0 +1,60 @@
+<div class="container" style="width:600px">
+    <br />
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="subscription">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>ID do Plano</label>
+                    <input type="text" class="form-control" id="subscription_plan_id">
+                    <br />
+                    <label>Nome do comprador</label>
+                    <input type="text" class="form-control" id="subscription_customer_name">
+                    <br />
+                </div>
+                <div class="col-xs-6">
+                    <label>Data de início da assinatura</label>
+                    <input type="date" class="form-control" id="subscription_customer_start_at">
+                    <br />
+                    <label>E-mail do comprador</label>
+                    <input type="text" class="form-control" id="subscription_customer_email">
+                    <br />
+                </div>
+            </div>
+            <br />
+            <button class="btn btn-success" data-dismiss="modal" id="button_createSubscription" onclick="SampleRecurrency.createSubscription();">Criar assinatura</button>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="discounts">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Ciclos</label>
+                    <input type="text" class="form-control" id="">
+                    <br />
+                    <label>Tipo de desconto</label>
+                    <br />
+                    <select class="form-control">
+                        <option value="percentage">Porcentagem</option>
+                        <option value="flat">Dinheiro</option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <label>Valor</label>
+                    <input type="text" class="form-control" id="">
+                    <br />
+                    <br />
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Adicionar desconto
+                    </button>
+                </div>
+            </div>
+            <br>
+            <ul class="list-group" style="width: 555px;">
+                <li class="list-group-item">Desconto 1
+                    <span class="label label-danger right"><a class="text-white">Excluir</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>

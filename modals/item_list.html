@@ -1,0 +1,40 @@
+<div class="container" style="width:1000px">
+    <br />
+    <div class="tab-content">
+        <div class="row">
+            <div class="col-xs-11">
+                <label>ID da assinatura</label>
+                <input type="text" readonly class="form-control" id="item_list_subscription_id">
+            </div>
+            <div class="col-xs-11" style="margin-top:10px;">
+                <label>Itens</label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Valor</th>
+                            <th>Ciclos</th>
+                            <th>Descrição</th>
+                            <th>Data de criação</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items_list_result">
+                    </tbody>
+                </table>
+                <script id="items_list_template" type="text/template">
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{price}}</td>
+                        <td>{{cycles}}</td>
+                        <td>{{description}}</td>
+                        <td>{{created_at}}</td>
+                        <td>{{status}}</td>
+                        <td><span class="label label-danger right"><a class="text-white" id="button_removeSubscriptionItem" onclick="SampleRecurrency.removeSubscriptionItem('{{id}}')">Excluir</a></span></td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
