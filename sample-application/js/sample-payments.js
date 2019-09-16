@@ -1,5 +1,5 @@
 ﻿var authenticationRequest = {
-    authenticationKey: 'D0553CA155C343C592CA87D29E6D1EA',
+    authenticationKey: '795180024C04479982560F61B3C2C06E',
 
 };
 
@@ -52,7 +52,7 @@ function handlerMultiplePaymentsElements(disabled) {
 
 var onPaymentSuccess = function (response) {
     updateResult(response.receipt.merchantReceipt + '<br>' + response.receipt.customerReceipt);
-    console.log(response )
+    console.log(response)
 };
 var onPaymentError = function (error) {
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
@@ -115,6 +115,19 @@ function paymentReversal() {
     };
 
     CapptaCheckout.paymentReversal(paymentReversalRequest, onPaymentSuccess, onPaymentError);
+}
+
+function reprint() {
+    var data = {
+        administrativeCode: $("#AdministrativeCodeForReprint").val(),
+        receiptType: $("#rbReprint > input:checked").val()
+    }
+    CapptaCheckout.reprint(data, onPaymentSuccess, onPaymentError);
+}
+
+function reprintLast() {
+    var data = { receiptType: $("#rbReprintLast > input:checked").val() }
+    CapptaCheckout.reprintLast(data, onPaymentSuccess, onPaymentError);
 }
 
 function pinpadInput() {

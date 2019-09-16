@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/sample.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60 = " crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60 = " crossorigin="anonymous"></script> -->
+    <script src="js/lib/jquery/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
-    <script type="text/javascript" src="http://cappta.api.s3.amazonaws.com/v3/dist/cappta-checkout.js"></script>
+    <!-- <script type="text/javascript" src="http://cappta.api.s3.amazonaws.com/v3/dist/cappta-checkout.js"></script> -->
+    <script src="js/lib/cappta-checkout/cappta-checkout.js"></script>
     <script src="js/sample-payments.js"></script>
 </head>
 
@@ -146,7 +148,7 @@
                     </div>
 
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-3 -2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Pagamento Crediário</div>
                         <div class="panel-body">
@@ -158,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-3 -2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Cancelamento</div>
                         <div class="panel-body">
@@ -170,7 +172,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-2">
+                <div class="col-xs-3 -2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Reimpressão</div>
+                        <div class="panel-body">
+                            <input type="text" class="form-control" id="AdministrativeCodeForReprint" placeholder="Número de controle" />
+                            <br />
+                            <label>Qual via a ser impressa?</label>
+                            <br />
+                            <p class="navbar-text" id="rbReprint">
+                                <input type="radio" name="receipt" value="1" checked /> Todas
+                                <input type="radio" name="receipt" value="2" /> Cliente
+                                <input type="radio" name="receipt" value="3" /> Loja
+                            </p>
+                            <button class="btn btn-default" id="reprintOperation" onclick="reprint();">Executar Operação</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 -2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Reimpressão Ultima via</div>
+                        <div class="panel-body">
+                            <br />
+                            <label>Qual via a ser impressa?</label>
+                            <br />
+                            <p class="navbar-text" id="rbReprintLast">
+                                <input type="radio" name="receipt" value="1" checked /> Todas
+                                <input type="radio" name="receipt" value="2" /> Cliente
+                                <input type="radio" name="receipt" value="3" /> Loja
+                            </p>
+                            <button class="btn btn-default" id="lastReprintOperation" onclick="reprintLast();">Executar Operação</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 -2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Pinpad</div>
                         <div class="panel-body">
@@ -186,6 +221,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="row col-xs-12">
                     <hr>
