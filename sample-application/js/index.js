@@ -66,5 +66,4 @@ $('.toggle-right-sidebar span').on('click', function() {
             $(this).removeClass(" animated fadeOutRight");
         });
     }
-
 });
