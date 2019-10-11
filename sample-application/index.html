@@ -51,9 +51,11 @@
                                 Multi Loja
                             </div>
                             <div class="panel-body">
-                                <button type="button" class="btn btn-default" onclick="getCheckouts()">Obter Checkouts</button>
+                                <button type="button" class="btn btn-default" onclick="getCheckouts()">Obter
+                                    Checkouts</button>
                                 <select id="checkoutList" style="width: 170px;height:30px;margin-left:5mm"></select>
-                                <button type="button" class="btn btn-default" style="margin-left:5mm" onclick="setCheckout()">Ativar Checkout Selecionado</button>
+                                <button type="button" class="btn btn-default" style="margin-left:5mm"
+                                    onclick="setCheckout()">Ativar Checkout Selecionado</button>
 
 
                                 <div class="well well-sm" style="margin-top:5mm">
@@ -82,17 +84,25 @@
                                 <div class="container-fluid">
                                     <p class="navbar-text">
                                         Utilizar pagamento com multiplos cartões?
-                                        <input type="radio" value="true" name="rbMultiplePayments" id="rbUseMultiplePayments"> Sim
-                                        <input type="radio" value="false" name="rbMultiplePayments" id="rbNotUseMultiplePayments" checked="checked"> Não
+                                        <input type="radio" value="true" name="rbMultiplePayments"
+                                            id="rbUseMultiplePayments"> Sim
+                                        <input type="radio" value="false" name="rbMultiplePayments"
+                                            id="rbNotUseMultiplePayments" checked="checked"> Não
                                     </p>
-                                    <input type="text" class="form-control hide" id="txtNumberOfPayments" placeholder="Quantidade de pagamentos" style="margin-top:9px;">
+                                    <input type="text" class="form-control hide" id="txtNumberOfPayments"
+                                        placeholder="Quantidade de pagamentos" style="margin-top:9px;">
                                 </div>
                                 <div class="container-fluid hide" id="multiplePaymentsButtons">
-                                    <p class="navbar-text" inline>Caso necessite encerrar a sessão multiplos cartões antes de chegar ao último pagamento,
+                                    <p class="navbar-text" inline>Caso necessite encerrar a sessão multiplos cartões
+                                        antes de chegar ao último pagamento,
                                         clique na opção desejada:
                                     </p>
-                                    <button type="button" class="btn btn-default navbar-btn" style="margin-left:4mm" id="btnConfirmMultiplePayments" onclick="confirmPayments();">Confirmar pagamentos</button>
-                                    <button type="button" class="btn btn-default navbar-btn" id="btnUndoMultiplePayments" onclick="undoPayments();">Desfazer pagamentos</button>
+                                    <button type="button" class="btn btn-default navbar-btn" style="margin-left:4mm"
+                                        id="btnConfirmMultiplePayments" onclick="confirmPayments();">Confirmar
+                                        pagamentos</button>
+                                    <button type="button" class="btn btn-default navbar-btn"
+                                        id="btnUndoMultiplePayments" onclick="undoPayments();">Desfazer
+                                        pagamentos</button>
                                 </div>
                             </div>
 
@@ -102,11 +112,11 @@
                                     <div class="panel-body">
                                         <input type="text" class="form-control" id="txtDebitAmount" placeholder="Valor">
                                         <br />
-                                        <button class="btn btn-default" onclick="debitPayment();">Executar Operação</button>
+                                        <input type="text" class="form-control" id="txtDebitRequestKey" maxlength="30"
+                                            placeholder="ID da transação">
                                         <br />
-                                        <br />
-                                        <br />
-                                        <br />
+                                        <button class="btn btn-default" onclick="debitPayment();">Executar
+                                            Operação</button>
                                     </div>
                                 </div>
                             </div>
@@ -115,14 +125,20 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">Pagamento Crédito</div>
                                     <div class="panel-body">
-                                        <input type="text" class="form-control" id="txtCreditAmount" placeholder="Valor">
+                                        <input type="text" class="form-control" id="txtCreditAmount"
+                                            placeholder="Valor">
+                                        <br />
+                                        <input type="text" class="form-control" id="txtCreditRequestKey" maxlength="30"
+                                            placeholder="ID da transação">
                                         <br />
                                         <label>Transação Parcelada?</label>
                                         <br />
                                         <label class="radio-inline">
-                                            <input type="radio" value="false" checked="checked" name="opInstallmentType" onclick="selectInstallmentType(false);">Não</label>
+                                            <input type="radio" value="false" checked="checked" name="opInstallmentType"
+                                                onclick="selectInstallmentType(false);">Não</label>
                                         <label class="radio-inline">
-                                            <input type="radio" value="true" name="opInstallmentType" onclick="selectInstallmentType(true);">Sim</label>
+                                            <input type="radio" value="true" name="opInstallmentType"
+                                                onclick="selectInstallmentType(true);">Sim</label>
                                         <br />
                                         <div class="hide" id="installmentDetails">
                                             <br />
@@ -134,10 +150,12 @@
                                             </select>
                                             <br />
                                             <br />
-                                            <input type="text" class="form-control" id="txtCreditInstallments" placeholder="Quantidade parcelas">
+                                            <input type="text" class="form-control" id="txtCreditInstallments"
+                                                placeholder="Quantidade parcelas">
                                         </div>
                                         <br />
-                                        <button class="btn btn-default" onclick="creditPayment();">Executar Operação</button>
+                                        <button class="btn btn-default" onclick="creditPayment();">Executar
+                                            Operação</button>
                                     </div>
                                 </div>
                             </div>
@@ -152,9 +170,14 @@
                         <div class="panel-body">
                             <input type="text" class="form-control" id="txtSplittedDebitAmount" placeholder="Valor">
                             <br />
-                            <input type="text" class="form-control" id="txtSplittedDebitInstallments" placeholder="Quantidade parcelas">
+                            <input type="text" class="form-control" id="txtSplittedDebitInstallments"
+                                placeholder="Quantidade parcelas">
                             <br />
-                            <button class="btn btn-default" id="btnSplittedDebitOperation" onclick="splittedDebitPayment();">Executar Operação</button>
+                            <input type="text" class="form-control" id="txtSplittedDebitRequestKey" maxlength="30"
+                                placeholder="ID da transação">
+                            <br />
+                            <button class="btn btn-default" id="btnSplittedDebitOperation"
+                                onclick="splittedDebitPayment();">Executar Operação</button>
                         </div>
                     </div>
                 </div>
@@ -162,11 +185,17 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Cancelamento</div>
                         <div class="panel-body">
-                            <input type="text" class="form-control" id="administrativePassword" placeholder="Senha administrativa" />
+                            <input type="text" class="form-control" id="administrativePassword"
+                                placeholder="Senha administrativa" />
                             <br />
-                            <input type="text" class="form-control" id="administrativeCode" placeholder="Número de controle" />
+                            <input type="text" class="form-control" id="administrativeCode"
+                                placeholder="Número de controle" />
                             <br />
-                            <button class="btn btn-default" id="paymentReversalOperation" onclick="paymentReversal();">Executar Operação</button>
+                            <input type="text" class="form-control" id="txtReversalRequestKey" maxlength="30"
+                                placeholder="ID da transação">
+                            <br />
+                            <button class="btn btn-default" id="paymentReversalOperation"
+                                onclick="paymentReversal();">Executar Operação</button>
                         </div>
                     </div>
                 </div>
@@ -174,8 +203,44 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Reimpressão</div>
                         <div class="panel-body">
-                            <input type="text" class="form-control" id="AdministrativeCodeForReprint" placeholder="Número de controle" />
-                            <button class="btn btn-default" id="reprintOperation" onclick="reprint();">Executar Operação</button>
+                            <input type="text" class="form-control" id="AdministrativeCodeForReprint"
+                                placeholder="Número de controle" />
+                            <br />
+                            <button class="btn btn-default" id="reprintOperation" onclick="reprint();">Executar
+                                Operação</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Buscar transação por ID</div>
+                        <div class="panel-body">
+                            <input type="text" class="form-control" id="GetPaymentTransaction"
+                                placeholder="Id de transação" />
+                            <br />
+                            <button class="btn btn-default" id="reprintOperation"
+                                onclick="getPaymentTransaction();">Executar Operação</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Resolução de pendência</div>
+                        <div  id="resolvePending" class="panel-body">
+                            <input type="text" class="form-control" id="resolvePendingAdministrativeCode"
+                                placeholder="Número de Controle" />
+                            <br />
+                            <label>O que deseja fazer com a transação?</label>
+                            <br />
+                            <label class="radio-inline">
+                                <input type="radio" value="2" name="resolvePending" checked="checked">Desfazer
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="resolvePending" value="1">Confirmar
+                            </label>
+                            <br />
+                            <button class="btn btn-default" onclick="resolvePendingTransaction();">Executar
+                                Operação</button>
                         </div>
                     </div>
                 </div>
@@ -183,7 +248,8 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Reimpressão Ultima via</div>
                         <div class="panel-body">
-                            <button class="btn btn-default" id="lastReprintOperation" onclick="reprintLast();">Executar Operação</button>
+                            <button class="btn btn-default" id="lastReprintOperation" onclick="reprintLast();">Executar
+                                Operação</button>
                         </div>
                     </div>
                 </div>
@@ -199,7 +265,8 @@
                             </select>
                             <br />
                             <br />
-                            <button class="btn btn-default" id="pinpadOperation" onclick="pinpadInput();">Executar Operação</button>
+                            <button class="btn btn-default" id="pinpadOperation" onclick="pinpadInput();">Executar
+                                Operação</button>
                         </div>
                     </div>
                 </div>
