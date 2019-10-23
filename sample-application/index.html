@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
-    <script type="text/javascript" src="http://cappta.api.s3.amazonaws.com/v3/dist/cappta-checkout.js"></script> -->
+    <script type="text/javascript" src="http://cappta.api.s3.amazonaws.com/homolog/dist/cappta-checkout.js"></script>
     <script src="js/sample-payments.js"></script>
 </head>
 
@@ -233,10 +233,10 @@
                             <label>O que deseja fazer com a transação?</label>
                             <br />
                             <label class="radio-inline">
-                                <input type="radio" value="2" name="resolvePending" checked="checked">Desfazer
+                                <input type="radio" value="1" name="resolvePending" checked="checked">Desfazer
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="resolvePending" value="1">Confirmar
+                                <input type="radio" value="0" name="resolvePending">Confirmar
                             </label>
                             <br />
                             <button class="btn btn-default" onclick="resolvePendingTransaction();">Executar
