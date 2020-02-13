@@ -1,0 +1,62 @@
+<div class="container" style="width:755px">
+    <br />
+    <div class="tab-content">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Número de controle</label>
+                    <input type="text" class="form-control" id="administrative_code">
+                    <br />                    
+                    <label>Modo de distribuição das taxas da transação</label>
+                    <br />
+                    <select class="form-control" id="fee_liability">
+                        <option value="merchant">Somente Loja</option>
+                        <option value="recipient">Somente Recebedores</option>
+                        <option value="shared">Todos</option>
+                    </select>
+                </div>
+                <div class="col-xs-6">
+                    <label>Programar a execução do split para</label>
+                    <input type="date" class="form-control" id="due_date">
+                    <br />
+                    <label>O valor de cada recebedor será informado será em</label>
+                    <br />
+                    <select class="form-control" id="amount_split_mode">
+                        <option value="percentual">Percentual</option>
+                        <option value="absolute">Absoluto</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <br>
+            <fieldset>
+                <legend>Recebedores</legend>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Chave do recebedor</label>
+                        <input type="text" class="form-control" id="split_recipient_key">
+                        <br />
+                        <button type="button" class="btn btn-default btn-xs" id="adicionar_item" onclick="addSplitRecipient()")>
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Adicionar recebedor
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Valor</label>
+                        <input type="text" class="form-control" id="split_recipient_amount">
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <ul class="list-group" style="width: 720px;">
+                <div id="result_split_recipients"></div>
+                <script id="split_recipients_template" type="text/template">
+                    <li class="list-group-item">
+                        <span><b>Chave do recebedor:</b> {{recipient_key}}</span>
+                        <span style="margin-left: 30px;"><b>Valor: </b>{{amount}}</span>
+                    </li>
+                </script>
+            </ul>
+            <br />
+            <button class="btn btn-success" data-dismiss="modal" id="button_createSplit" onclick="SampleSplit.createSplit();">Criar split</button>
+        </div>
+    <br />
+</div>
