@@ -15,7 +15,6 @@
 
                 switch (data.details.interactionType) {
                     case interactionType.ASK_TWO_OPTIONS:
-                    case interactionType.ASK_TWO_OPTIONS_WITH_TIMEOUT:
                     case interactionType.ASK_UNDO_OR_CONFIRM_PENDING_PAYMENTS:
                         confirm(msg)
                             ? data.next(1)
