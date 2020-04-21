@@ -64,7 +64,8 @@ function debitPayment() {
     }
 
     var amount = parseFloat(document.getElementById('txtDebitAmount').value.replace(',', ''));
-    checkout.debitPayment({ amount: amount }, onPaymentSuccess, onPaymentError);
+    var requestKey = document.getElementById("txtDebitRequestKey").value;
+    checkout.debitPayment({ amount: amount, requestKey }, onPaymentSuccess, onPaymentError);
 }
 
 function creditPayment() {
@@ -79,6 +80,7 @@ function creditPayment() {
 
     var creditRequest = {
         amount: parseFloat(document.getElementById('txtCreditAmount').value.replace(',', '')),
+        requestKey: document.getElementById("txtCreditRequestKey").value,
         installments: installments === '' ? 0 : installments,
         installmentType: installmentType
     };
@@ -93,6 +95,7 @@ function splittedDebitPayment() {
 
     var splittedDebitRequest = {
         amount: parseFloat(document.getElementById('txtSplittedDebitAmount').value.replace(',', '')),
+        requestKey: document.getElementById("txtSplittedDebitRequestKey").value,
         installments: document.getElementById('txtSplittedDebitInstallments').value
     };
 
@@ -111,7 +114,8 @@ function paymentReversal() {
 
     var paymentReversalRequest = {
         administrativePassword: document.getElementById('administrativePassword').value,
-        administrativeCode: document.getElementById('administrativeCode').value
+        administrativeCode: document.getElementById('administrativeCode').value,
+        requestKey: document.getElementById("txtReversalRequestKey").value
     };
 
     CapptaCheckout.paymentReversal(paymentReversalRequest, onPaymentSuccess, onPaymentError);
@@ -122,12 +126,32 @@ function reprint() {
         administrativeCode: $("#AdministrativeCodeForReprint").val(),
         receiptType: $("#rbReprint > input:checked").val()
     }
-    CapptaCheckout.reprint(data, onPaymentSuccess, onPaymentError);
+    checkout.reprint(data, onPaymentSuccess, onPaymentError);
+}
+
+function resolvePendingTransaction() {
+    var data = {
+        administrativeCode: $('#resolvePendingAdministrativeCode').val(),
+        action: parseInt($('#resolvePending input:checked').val())
+    }
+
+    const success = (response) => {
+        console.log(response)
+        updateResult(`Número de Controle: ${response.administrativeCode}<br>Resolvida: ${response.success ? "Sim" : "Não"}`);
+        console.log(response)
+    }
+
+    checkout.resolvePendingTransaction(data, success, onPaymentError);
 }
 
 function reprintLast() {
     var data = { receiptType: $("#rbReprintLast > input:checked").val() }
-    CapptaCheckout.reprintLast(data, onPaymentSuccess, onPaymentError);
+    checkout.reprintLast(data, onPaymentSuccess, onPaymentError);
+}
+
+function getPaymentTransaction() {
+    var data = { requestKey: $("#GetPaymentTransaction").val() }
+    checkout.getPaymentTransaction(data, onPaymentSuccess, onPaymentError);
 }
 
 function pinpadInput() {
