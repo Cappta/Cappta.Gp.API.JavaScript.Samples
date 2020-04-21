@@ -1,6 +1,46 @@
 ﻿var authenticationRequest = {
     authenticationKey: 'D0553CA155C343C592CA87D29E6D1EA',
+    backgroundInteraction: data => {
+        const msg = data.details.message
+        const responseType = CapptaCheckout.responseType
+        const interactionType = CapptaCheckout.interactionType
 
+        switch (data.responseType) {
+            case responseType.SHOW_MESSAGE:
+                updateResult(msg)
+                break;
+
+            case responseType.REQUEST_DATA:
+                updateResult(msg)
+
+                switch (data.details.interactionType) {
+                    case interactionType.ASK_TWO_OPTIONS:
+                    case interactionType.ASK_UNDO_OR_CONFIRM_PENDING_PAYMENTS:
+                        confirm(msg)
+                            ? data.next(1)
+                            : data.next(0)
+                        break
+
+                    case interactionType.ASK_REVERSAL_PASSWORD:
+                        // se o interactionType for 'ASK_REVERSAL_PASSWORD'
+                        // poderia ser um campo mascarado aqui
+                        var response = prompt(msg)
+                        response
+                            ? data.next(response)
+                            : data.back()
+                        break
+
+                    default:
+                        var response = prompt(msg)
+                        response
+                            ? data.next(response)
+                            : data.back()
+                        break
+                }
+
+                break;
+        }
+    }
 };
 
 var checkouts;
@@ -14,11 +54,11 @@ var onAuthenticationError = function (error) {
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
 };
 
-var onPendingPayments = function (response) {
+var onFoundPendingPaymentsOnLastMultiPaymentsSession = function (response) {
     console.log(response);
 };
 
-var checkout = CapptaCheckout.authenticate(authenticationRequest, onAuthenticationSuccess, onAuthenticationError, onPendingPayments);
+var checkout = CapptaCheckout.authenticate(authenticationRequest, onAuthenticationSuccess, onAuthenticationError, onFoundPendingPaymentsOnLastMultiPaymentsSession);
 
 var multiplePaymentsSessionInProgress = false;
 
@@ -33,18 +73,17 @@ function startMultiplePayments() {
         checkout.startMultiplePayments(numberOfPayments, function () {
             alert('Sessão multiplos pagamentos encerrada!');
             document.getElementById('txtNumberOfPayments').value = 0;
-            handlerMultiplePaymentsElements(false);
-
+            toogleMultiplePaymentsElements(false);
         });
 
         multiplePaymentsSessionInProgress = true;
-        handlerMultiplePaymentsElements(true);
+        toogleMultiplePaymentsElements(true);
     } catch (ex) {
         alert(ex);
     }
 }
 
-function handlerMultiplePaymentsElements(disabled) {
+function toogleMultiplePaymentsElements(disabled) {
     document.getElementById('txtNumberOfPayments').disabled = disabled;
     document.getElementById('rbUseMultiplePayments').disabled = disabled;
     document.getElementById('rbNotUseMultiplePayments').disabled = disabled;
@@ -52,7 +91,6 @@ function handlerMultiplePaymentsElements(disabled) {
 
 var onPaymentSuccess = function (response) {
     updateResult(response.receipt.merchantReceipt + '<br>' + response.receipt.customerReceipt);
-    console.log(response)
 };
 var onPaymentError = function (error) {
     updateResult('Código: ' + error.reasonCode + '<br>' + error.reason);
@@ -73,8 +111,8 @@ function creditPayment() {
         startMultiplePayments();
     }
 
-    var elInstallmentType = document.getElementById("installmentType");
-    var installmentType = elInstallmentType.options[elInstallmentType.selectedIndex].value;
+    var installmentTypeElement = document.getElementById("installmentType");
+    var installmentType = installmentTypeElement.options[installmentTypeElement.selectedIndex].value;
 
     var installments = document.getElementById('txtCreditInstallments').value;
 
@@ -102,7 +140,7 @@ function splittedDebitPayment() {
     checkout.splittedDebitPayment(splittedDebitRequest, onPaymentSuccess, onPaymentError);
 }
 
-function selectInstallmentType(value) {
+function toogleInstallmentTypeElements(value) {
     if (value) {
         document.getElementById('installmentDetails').classList.add('show');
         return;
@@ -131,32 +169,32 @@ function reprint() {
 
 function resolvePendingTransaction() {
     var data = {
-        administrativeCode: $('#resolvePendingAdministrativeCode').val(),
-        action: parseInt($('#resolvePending input:checked').val())
+        administrativeCode: $('#resolvePendingAdministrativeCode').val()
     }
 
     const success = (response) => {
-        console.log(response)
         updateResult(`Número de Controle: ${response.administrativeCode}<br>Resolvida: ${response.success ? "Sim" : "Não"}`);
-        console.log(response)
     }
 
-    checkout.resolvePendingTransaction(data, success, onPaymentError);
+    if (parseInt($('#resolvePending input:checked').val()) == 1) {
+        checkout.undoPendingPayment(data, success, onPaymentError)
+    } else {
+        checkout.confirmPendingPayment(data, success, onPaymentError);
+    }
 }
 
 function reprintLast() {
-    var data = { receiptType: $("#rbReprintLast > input:checked").val() }
-    checkout.reprintLast(data, onPaymentSuccess, onPaymentError);
+    checkout.reprintLast(onPaymentSuccess, onPaymentError);
 }
 
 function getPaymentTransaction() {
-    var data = { requestKey: $("#GetPaymentTransaction").val() }
-    checkout.getPaymentTransaction(data, onPaymentSuccess, onPaymentError);
+    var data = { requestKey: $("#requestKey").val() }
+    checkout.getPaymentByRequestKey(data, onPaymentSuccess, onPaymentError);
 }
 
 function pinpadInput() {
-    var elInputType = document.getElementById("pinpadInputType");
-    var inputType = elInputType.options[elInputType.selectedIndex].value;
+    var pinpadInputType = document.getElementById("pinpadInputType");
+    var inputType = pinpadInputType.options[pinpadInputType.selectedIndex].value;
 
     var success = function (response) {
         updateResult(response.pinpadValue);

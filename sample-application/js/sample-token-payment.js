@@ -1,5 +1,5 @@
 ﻿var authenticationRequest = {
-    authenticationKey: '795180024C04479982560F61B3C2C06E' 
+    authenticationKey: '795180024C04479982560F61B3C2C06E'
 };
 
 var onAuthenticationSuccess = function (response) {
@@ -43,7 +43,6 @@ function creditPaymentAndCreateCardToken() {
         };
 
         var success = function(response) {
-            console.log(response.cardTokenDetails.cardToken)
             var cardToken = 'Token Mundipagg do cartão de crédito:<br><b>' 
                             + 'CardToken: ' + response.cardTokenDetails.cardToken + '</b><br>'
                             + 'Bandeira: ' + response.cardTokenDetails.cardBrandName + '<br>'
@@ -181,4 +180,3 @@ $(function () {
     $('#txtCreditAmount').maskMoney();
     $('#txtTokenAmount').maskMoney();
 });
-

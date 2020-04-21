@@ -1,7 +1,5 @@
 ﻿var authenticationRequest = {
-    authenticationKey: '795180024C04479982560F61B3C2C06E',
-     merchantCnpj: '08476665000188',
-     checkoutNumber: 1
+    authenticationKey: '795180024C04479982560F61B3C2C06E'
 };
 
 var onAuthenticationSuccess = function (response) {
