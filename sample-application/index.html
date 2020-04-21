@@ -51,18 +51,14 @@
                                 Multi Loja
                             </div>
                             <div class="panel-body">
-                                <button type="button" class="btn btn-default" onclick="getCheckouts()">Obter
-                                    Checkouts</button>
-                                <select id="checkoutList" style="width: 170px;height:30px;margin-left:5mm"></select>
-                                <button type="button" class="btn btn-default" style="margin-left:5mm"
-                                    onclick="setCheckout()">Ativar Checkout Selecionado</button>
-
+                                <button type="button" class="btn btn-default" onclick="getCheckouts()">Obter Checkouts</button>
+                                <select id="checkoutList" style="width: 170px;height:30px;margin-left:5mm" onchange="updateCheckoutInfo()"></select>
 
                                 <div class="well well-sm" style="margin-top:5mm">
                                     <h3>
-                                        <strong> PDV Atual </strong>
+                                        <strong>PDV Selecionado</strong>
                                     </h3>
-                                    <p id="active-checkout"></p>
+                                    <p id="selected-checkout"></p>
                                 </div>
                             </div>
                         </div>

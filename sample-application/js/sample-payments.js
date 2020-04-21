@@ -254,28 +254,14 @@ function getCheckouts() {
     checkout.getCheckouts(success, error);
 }
 
-function setCheckout() {
-    var success = function (response, cnpj) {
-        updateResult("PDV ativado com sucesso");
-        updateCheckoutInfo(cnpj);
-    };
-
-    var error = function (response) {
-        console.log(response);
-        updateResult(response.reason);
-    };
-
+function updateCheckoutInfo() {
     var cnpj = document.getElementById("checkoutList").value;
-    checkout.setCheckout(cnpj, success, error);
-}
-
-function updateCheckoutInfo(cnpj) {
-    var info = document.getElementById("active-checkout");
-    var checkout = getActivatedCheckout(checkouts, cnpj);
+    var info = document.getElementById("selected-checkout");
+    var checkout = getSelectedCheckout(checkouts, cnpj);
     info.innerHTML = "Estabelecimento: " + checkout.TradingName + "<br>CNPJ: " + checkout.MerchantCnpj + "<br>PDV: " + checkout.CheckoutNumber;
 }
 
-function getActivatedCheckout(checkouts, cnpj) {
+function getSelectedCheckout(checkouts, cnpj) {
     return checkouts.find(function (item) {
         return item.MerchantCnpj === cnpj;
     });
