@@ -101,9 +101,11 @@ function debitPayment() {
         startMultiplePayments();
     }
 
-    var amount = parseFloat(document.getElementById('txtDebitAmount').value.replace(',', ''));
-    var requestKey = document.getElementById("txtDebitRequestKey").value;
-    checkout.debitPayment({ amount: amount, requestKey }, onPaymentSuccess, onPaymentError);
+    checkout.debitPayment({
+        merchantCnpj: document.getElementById("checkoutList").value,
+        amount: parseFloat(document.getElementById('txtDebitAmount').value.replace(',', '')),
+        requestKey: document.getElementById("txtDebitRequestKey").value
+    }, onPaymentSuccess, onPaymentError);
 }
 
 function creditPayment() {
@@ -113,17 +115,15 @@ function creditPayment() {
 
     var installmentTypeElement = document.getElementById("installmentType");
     var installmentType = installmentTypeElement.options[installmentTypeElement.selectedIndex].value;
-
     var installments = document.getElementById('txtCreditInstallments').value;
 
-    var creditRequest = {
+    checkout.creditPayment({
+        merchantCnpj: document.getElementById("checkoutList").value,
         amount: parseFloat(document.getElementById('txtCreditAmount').value.replace(',', '')),
         requestKey: document.getElementById("txtCreditRequestKey").value,
         installments: installments === '' ? 0 : installments,
         installmentType: installmentType
-    };
-
-    checkout.creditPayment(creditRequest, onPaymentSuccess, onPaymentError);
+    }, onPaymentSuccess, onPaymentError);
 }
 
 function splittedDebitPayment() {
@@ -131,13 +131,12 @@ function splittedDebitPayment() {
         startMultiplePayments();
     }
 
-    var splittedDebitRequest = {
+    checkout.splittedDebitPayment({
+        merchantCnpj: document.getElementById("checkoutList").value,
         amount: parseFloat(document.getElementById('txtSplittedDebitAmount').value.replace(',', '')),
         requestKey: document.getElementById("txtSplittedDebitRequestKey").value,
         installments: document.getElementById('txtSplittedDebitInstallments').value
-    };
-
-    checkout.splittedDebitPayment(splittedDebitRequest, onPaymentSuccess, onPaymentError);
+    }, onPaymentSuccess, onPaymentError);
 }
 
 function toogleInstallmentTypeElements(value) {
@@ -255,28 +254,14 @@ function getCheckouts() {
     checkout.getCheckouts(success, error);
 }
 
-function setCheckout() {
-    var success = function (response, cnpj) {
-        updateResult("PDV ativado com sucesso");
-        updateCheckoutInfo(cnpj);
-    };
-
-    var error = function (response) {
-        console.log(response);
-        updateResult(response.reason);
-    };
-
+function updateCheckoutInfo() {
     var cnpj = document.getElementById("checkoutList").value;
-    checkout.setCheckout(cnpj, success, error);
-}
-
-function updateCheckoutInfo(cnpj) {
-    var info = document.getElementById("active-checkout");
-    var checkout = getActivatedCheckout(checkouts, cnpj);
+    var info = document.getElementById("selected-checkout");
+    var checkout = getSelectedCheckout(checkouts, cnpj);
     info.innerHTML = "Estabelecimento: " + checkout.TradingName + "<br>CNPJ: " + checkout.MerchantCnpj + "<br>PDV: " + checkout.CheckoutNumber;
 }
 
-function getActivatedCheckout(checkouts, cnpj) {
+function getSelectedCheckout(checkouts, cnpj) {
     return checkouts.find(function (item) {
         return item.MerchantCnpj === cnpj;
     });
